@@ -722,10 +722,6 @@ video {
   flex-direction: column;
 }
 
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
 .items-end {
   align-items: flex-end;
 }
@@ -748,10 +744,6 @@ video {
 
 .gap-3 {
   gap: 0.75rem;
-}
-
-.gap-y-8 {
-  row-gap: 2rem;
 }
 
 .space-x-0 > :not([hidden]) ~ :not([hidden]) {
@@ -1932,34 +1924,53 @@ Header .Barra .Logo h3 .microfono::after {
 
 .page {
   position: absolute;
-  z-index: 0;
   display: flex;
-  max-height: 100%;
-  min-height: 100%;
-  min-width: 100%;
+  height: 100%;
+  width: 100%;
   flex-grow: 1;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 2rem;
+}
+
+/* .playlist-3 {
+  @apply px-24 gap-y-8 py-4;
+}
+
+.playlist-6 {
+  @apply px-40 gap-y-2 py-2;
+} */
+
+.page[selected] {
+  z-index: 10;
+}
+
+.page__row {
+  display: flex;
+  flex-grow: 1;
   justify-content: space-between;
 }
 
-.playlist-3 {
-  row-gap: 2rem;
+.page-3 {
   padding-left: 6rem;
   padding-right: 6rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
-.playlist-6 {
-  row-gap: 0.5rem;
+.page-6 {
   padding-left: 10rem;
   padding-right: 10rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
 
-.page[selected] {
-  z-index: 10;
+.page-3 .page__row {
+  height: 100%;
+}
+
+.page-6 .page__row {
+  height: 45.833333%;
 }
 
 .playlist__item {
@@ -1968,13 +1979,13 @@ Header .Barra .Logo h3 .microfono::after {
   flex-basis: 33.333333%;
 }
 
-.playlist-3 .playlist__item {
-  /* @apply min-h-full; */
+/* .playlist-3 .playlist__item {
+  @apply min-h-full;
 }
 
 .playlist-6 .playlist__item {
-  /* @apply h-44; */
-}
+  @apply h-44;
+} */
 
 .playlist__item__cont {
   display: flex;

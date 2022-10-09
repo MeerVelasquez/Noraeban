@@ -10,21 +10,26 @@ export default function renderPlaylist(globals) {
     updatePaging(numPages);
 
     let $page;
-    let temp = '';
+    let songsTemp = [];
     for(let i = 0; i < songs.length; i++) {
         if(i % 5 === 0) {
             if($page) { // if not first page
-                $page.innerHTML = temp;
-                $page.classList.add('playlist-6');
-                // $page.appendChild($addSong);
-                temp = '';
+                const $row1 = document.createElement('div');
+                const $row2 = document.createElement('div');
+                $row1.className = 'page-row';
+                $row2.className = 'page-row';
+                $row1.innerHTML = songsTemp.slice(0, 3).join('');
+                $row2.innerHTML = songsTemp.slice(3, 5).join('');
+                $page.appendChild($row1);
+                $page.appendChild($row2);
+                songsTemp = [];
             }
             $page = document.createElement('div');
             $playlist.appendChild($page);
             $page.className = 'page';
         }
         // grow lg:basis-1/3 basis-full min-h-full md:min-h-0 md:basis-1/2 md:max-w-11/24 lg:max-w-7/24
-        temp += `
+        songsTemp.push(`
         <div class="playlist__item song">
             <div class="playlist__item__cont">
                 <span class="song__music-note img-abs-cont img-abs-cont-cent">
@@ -39,9 +44,9 @@ export default function renderPlaylist(globals) {
                 </span>
             </div>
         </div>
-        `;
+        `);
     }
-    $page.innerHTML = temp;
+    $page.innerHTML = songsTemp;
     $page.classList.add($page.children.length > 2 ? 'playlist-6' : 'playlist-3');
     selectPage(1);
 
