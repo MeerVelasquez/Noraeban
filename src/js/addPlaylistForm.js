@@ -2,7 +2,9 @@ import { setPlaylists } from './utils.js';
 import PlayList from './playlist.js';
 import { loadPlaylists, selectPlaylistNamed } from './playlistsDropdown.js';
 
-export default function(playlists) {
+export default function(globals) {
+    const playlists = globals.playlists;
+
     $form.addEventListener('submit', e => {
         e.preventDefault();
         const data = new FormData($form);
@@ -27,4 +29,3 @@ export default function(playlists) {
 
 const $modalPlaylist = document.querySelector('.modal-playlist');
 const $form = $modalPlaylist.querySelector('.modal-playlist form');
-// const $submit = $form.querySelector('button[type="submit"]');

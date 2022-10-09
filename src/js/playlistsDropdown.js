@@ -1,6 +1,7 @@
+import renderPlaylist from "./renderPlaylist.js";
 import { hasAncestor } from "./utils.js";
 
-export default function(playlists) {
+export default function(globals) {
     document.addEventListener('click', (e) => {
         if($playlistsDropdown.classList.contains('hidden')) {
             if(hasAncestor(e.target, $playlistsBtn)) {
@@ -10,6 +11,8 @@ export default function(playlists) {
             if(hasAncestor(e.target, $playlistsDropdown)) {
                 if(e.target.matches('.playlists-dropdown__option')) {
                     selectPlaylist(e.target);
+                    globals.currentPlaylist = e.target.textContent;
+                    renderPlaylist(globals);
                 } else if(e.target.matches('.playlists-dropdown__new')) {
                     $playlistsDropdown.classList.add('hidden');
                     document.querySelector('.modal-playlist').classList.remove('hidden');
@@ -20,7 +23,7 @@ export default function(playlists) {
         }
     });
 
-    loadPlaylists(playlists);
+    loadPlaylists(globals.playlists);
 }
 
 export function loadPlaylists(playlists) {

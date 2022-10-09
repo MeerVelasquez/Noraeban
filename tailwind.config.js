@@ -31,6 +31,8 @@ module.exports = {
   theme: {
     fontFamily: {
       'ramabhadra': ['Ramabhadra', 'sans-serif'],
+      'inter-tight': ['Inter var', 'sans-serif'],
+      // 'inter-tight': ['Inter Tight', 'sans-serif'],
     },
     extend: {
       colors: {
@@ -56,6 +58,7 @@ module.exports = {
       },
       gap: percentages,
       minWidth: percentages,
+      minHeight: percentages,
       maxWidth: percentages,
       maxHeight: percentages,
       fontSize: percentages,

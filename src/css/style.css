@@ -586,6 +586,10 @@ video {
   z-index: 10;
 }
 
+.z-50 {
+  z-index: 50;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -849,11 +853,6 @@ video {
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
-}
-
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
 }
 
 .pt-5 {
@@ -1926,8 +1925,60 @@ Header .Barra .Logo h3 .microfono::after {
 
 /* Playlist */
 
-.playlist__item {
+.playlist {
+  position: relative;
+  flex-grow: 1;
+}
+
+.page {
+  position: absolute;
+  z-index: 0;
   display: flex;
+  max-height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.playlist-3 {
+  row-gap: 2rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.playlist-6 {
+  row-gap: 0.5rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.page[selected] {
+  z-index: 10;
+}
+
+.playlist__item {
+  max-width: 29.166667%;
+  flex-grow: 1;
+  flex-basis: 33.333333%;
+}
+
+.playlist-3 .playlist__item {
+  /* @apply min-h-full; */
+}
+
+.playlist-6 .playlist__item {
+  /* @apply h-44; */
+}
+
+.playlist__item__cont {
+  display: flex;
+  height: 100%;
   cursor: pointer;
   flex-direction: column;
   align-items: center;
@@ -1939,12 +1990,14 @@ Header .Barra .Logo h3 .microfono::after {
   border-color: rgb(110 99 155 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(240 237 250 / var(--tw-bg-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 75ms;
 }
 
-.playlist__item:hover {
+.playlist__item__cont:hover {
   --tw-scale-x: 1.05;
   --tw-scale-y: 1.05;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1996,9 +2049,9 @@ Header .Barra .Logo h3 .microfono::after {
   color: rgb(208 177 208 / var(--tw-text-opacity));
 }
 
-/* .add-song {
-  @apply bg-purple-lighter rounded-4xl border-purple border-2 flex flex-col items-center justify-center gap-6 cursor-pointer;
-} */
+.add-song .playlist__item__cont {
+  border-style: dashed;
+}
 
 .add-song__plus {
   aspect-ratio: 1 / 1;
@@ -2014,6 +2067,22 @@ Header .Barra .Logo h3 .microfono::after {
   line-height: 1.75rem;
   --tw-text-opacity: 1;
   color: rgb(208 177 208 / var(--tw-text-opacity));
+}
+
+/* Pagination */
+
+.page-btn {
+  cursor: pointer;
+  border-radius: 0.375rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(110 99 155 / var(--tw-bg-opacity));
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-family: Inter var, sans-serif;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .hover\:bg-red-700:hover {
@@ -2115,11 +2184,6 @@ Header .Barra .Logo h3 .microfono::after {
     padding-right: 1.5rem;
   }
 
-  .sm\:px-40 {
-    padding-left: 10rem;
-    padding-right: 10rem;
-  }
-
   .sm\:pb-4 {
     padding-bottom: 1rem;
   }
@@ -2155,10 +2219,5 @@ Header .Barra .Logo h3 .microfono::after {
 
   .lg\:basis-1\/3 {
     flex-basis: 33.333333%;
-  }
-
-  .lg\:px-24 {
-    padding-left: 6rem;
-    padding-right: 6rem;
   }
 }

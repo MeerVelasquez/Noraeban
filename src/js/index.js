@@ -1,10 +1,47 @@
 import playlistsDropdown from "./playlistsDropdown.js";
 import modals from "./modals.js";
 import addPlaylistForm from "./addPlayListForm.js";
+// import renderPlaylist from "./renderPlaylist.js";
 import { getPlaylists } from "./utils.js";
 
-const playlists = getPlaylists();
+const globals = {
+    playlists: [
+        {
+            name: 'Playlist 1',
+            songs: [
+                {
+                    title: 'Song 1',
+                    artist: 'Artist 1',
+                },
+                {
+                    title: 'Song 1',
+                    artist: 'Artist 1',
+                },
+                {
+                    title: 'Song 1',
+                    artist: 'Artist 1',
+                },
+                // {
+                //     title: 'Song 1',
+                //     artist: 'Artist 1',
+                // },
+                // {
+                //     title: 'Song 1',
+                //     artist: 'Artist 1',
+                // },
+                // {
+                //     title: 'Song 1',
+                //     artist: 'Artist 1',
+                // },
+            ]
+        }
+    ],
+    currentPlaylist: null,
+    currentSong: null,
+    currentPage: 1,
+}
 
-playlistsDropdown(playlists);
+playlistsDropdown(globals);
 modals();
-addPlaylistForm(playlists);
+addPlaylistForm(globals);
+// renderPlaylist(globals);
