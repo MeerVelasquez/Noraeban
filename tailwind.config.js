@@ -42,6 +42,7 @@ module.exports = {
         'purple-lighter': '#d3c9fc',
         'purple-lightest': '#f0edfa',
         'gray-input': '#ddd',
+        'lila': '#d0b1d0',
       },
       boxShadow: {
         'header': '0 4px 4px #bbb',
@@ -60,6 +61,7 @@ module.exports = {
       fontSize: percentages,
       padding: percentages,
       borderRadius: {
+        '4xl': '2rem',
         '8xl': '4rem',
       }
     },

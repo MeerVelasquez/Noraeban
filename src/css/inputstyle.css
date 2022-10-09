@@ -718,6 +718,30 @@ Header .Barra .Logo h3 .microfono::after {
 
 /* COMPONENTS */
 
+/* General */
+
+.form-btn {
+  @apply mt-6 bg-purple text-white font-bold py-2 px-4 rounded;
+}
+
+.input-text {
+  @apply bg-gray-input bg-opacity-80 placeholder:text-gray-900 placeholder:font-semibold px-2 focus:placeholder:text-transparent leading-9 focus:outline-none;
+}
+
+.img-abs-cont {
+  @apply relative;
+}
+
+.img-abs-cont img {
+  @apply absolute object-cover;
+}
+
+.img-abs-cont.img-abs-cont-cent img {
+  @apply top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2;
+}
+
+/* Playlists dropdown */
+
 .playlists-dropdown__option {
   @apply text-gray-700 block px-4 py-2 text-sm hover:bg-purple-lighter cursor-pointer;
 }
@@ -725,6 +749,8 @@ Header .Barra .Logo h3 .microfono::after {
 .playlists-dropdown__option[selected] {
   @apply text-white bg-purple-light;
 }
+
+/* Modals */
 
 .modal-close {
   @apply absolute top-0 right-0 mt-4 mr-4 text-gray-500 hover:text-gray-700 cursor-pointer;
@@ -738,19 +764,36 @@ Header .Barra .Logo h3 .microfono::after {
   @apply relative transform overflow-hidden rounded-lg bg-white bg-opacity-80 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg border-2 border-purple border-dashed;
 }
 
-.form-btn {
-  @apply mt-6 bg-purple text-white font-bold py-2 px-4 rounded;
-}
-
-.input-text {
-  @apply bg-gray-input bg-opacity-80 placeholder:text-gray-900 placeholder:font-semibold px-2 focus:placeholder:text-transparent leading-9 focus:outline-none;
-}
+/* Playlist */
 
 .playlist__item {
-  @apply bg-purple-lightest rounded-8xl border-purple border-2 flex flex-col items-center justify-center gap-6 cursor-pointer;
+  @apply bg-purple-lightest rounded-4xl border-purple border-2 flex flex-col items-center justify-center gap-6 cursor-pointer;
 }
 
-.song__music-icon {
-  /* @apply bg-white text-purple-light rounded-full text-center min-w-3/5 aspect-square; */
-  @apply bg-white text-purple-light rounded-full text-center aspect-square text-4xl lg:text-8xl p-12;
+.song__music-note {
+  @apply bg-white text-purple-light rounded-full w-3/5 aspect-square;
+}
+
+.song__music-note img {
+  @apply w-2/5;
+}
+
+.song__play {
+  @apply w-1/3 aspect-square;
+}
+
+.song__play img {
+  @apply w-full;
+}
+
+.song__info {
+  @apply  flex gap-2 flex-col justify-between items-center text-center px-2;
+}
+
+.song__info__title {
+  @apply text-purple text-lg;
+}
+
+.song__info__artist {
+  @apply  text-lila text-sm;
 }
