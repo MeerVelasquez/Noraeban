@@ -767,11 +767,11 @@ Header .Barra .Logo h3 .microfono::after {
 /* Playlist */
 
 .playlist__item {
-  @apply bg-purple-lightest rounded-4xl border-purple border-2 flex flex-col items-center justify-center gap-6 cursor-pointer;
+  @apply bg-purple-lightest rounded-4xl border-purple border-2 flex flex-col items-center justify-center gap-6 cursor-pointer hover:scale-105 transition-all duration-75;
 }
 
 .song__music-note {
-  @apply bg-white text-purple-light rounded-full w-3/5 aspect-square;
+  @apply bg-white rounded-full w-3/5 aspect-square;
 }
 
 .song__music-note img {
@@ -795,5 +795,21 @@ Header .Barra .Logo h3 .microfono::after {
 }
 
 .song__info__artist {
-  @apply  text-lila text-sm;
+  @apply text-lila text-sm;
+}
+
+/* .add-song {
+  @apply bg-purple-lighter rounded-4xl border-purple border-2 flex flex-col items-center justify-center gap-6 cursor-pointer;
+} */
+
+.add-song__plus {
+  @apply w-3/5 aspect-square;
+}
+
+.add-song__plus img {
+  @apply w-full;
+}
+
+.add-song__msg {
+  @apply text-lila text-lg;
 }
