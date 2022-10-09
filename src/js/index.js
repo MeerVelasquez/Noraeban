@@ -8,32 +8,10 @@ const globals = {
     playlists: [
         {
             name: 'Playlist 1',
-            songs: [
-                {
-                    title: 'Song 1',
-                    artist: 'Artist 1',
-                },
-                {
-                    title: 'Song 1',
-                    artist: 'Artist 1',
-                },
-                {
-                    title: 'Song 1',
-                    artist: 'Artist 1',
-                },
-                {
-                    title: 'Song 1',
-                    artist: 'Artist 1',
-                },
-                {
-                    title: 'Song 1',
-                    artist: 'Artist 1',
-                },
-                {
-                    title: 'Song 1',
-                    artist: 'Artist 1',
-                },
-            ]
+            songs: Array(7).fill(0).map((_, i) => ({
+                title: `Song ${i + 1}`,
+                artist: `Artist ${i + 1}`,
+            }))
         }
     ],
     currentPlaylist: null,

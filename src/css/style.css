@@ -1962,8 +1962,8 @@ Header .Barra .Logo h3 .microfono::after {
 }
 
 .page-6 {
-  padding-left: 10rem;
-  padding-right: 10rem;
+  padding-left: 29.166667%;
+  padding-right: 29.166667%;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
@@ -1997,7 +1997,7 @@ Header .Barra .Logo h3 .microfono::after {
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  border-radius: 2rem;
+  border-radius: 1rem;
   border-width: 2px;
   --tw-border-opacity: 1;
   border-color: rgb(110 99 155 / var(--tw-border-opacity));
@@ -2080,6 +2080,7 @@ Header .Barra .Logo h3 .microfono::after {
 }
 
 .add-song__msg {
+  text-align: center;
   font-size: 1.125rem;
   line-height: 1.75rem;
   --tw-text-opacity: 1;

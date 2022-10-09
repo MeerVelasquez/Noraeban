@@ -804,7 +804,7 @@ Header .Barra .Logo h3 .microfono::after {
 }
 
 .page-6 {
-  @apply px-40 py-2;
+  @apply px-7/24 py-2;
 }
 
 .page-3 .page__row {
@@ -828,7 +828,7 @@ Header .Barra .Logo h3 .microfono::after {
 } */
 
 .playlist__item__cont {
-  @apply bg-purple-lightest py-2 rounded-4xl border-purple border-2 flex flex-col items-center justify-center gap-6 cursor-pointer hover:scale-105 transition-all duration-75 h-full;
+  @apply bg-purple-lightest py-2 rounded-2xl border-purple border-2 flex flex-col items-center justify-center gap-6 cursor-pointer hover:scale-105 transition-all duration-75 h-full;
 }
 
 .song__music-note {
@@ -876,7 +876,7 @@ Header .Barra .Logo h3 .microfono::after {
 }
 
 .add-song__msg {
-  @apply text-lila text-lg;
+  @apply text-lila text-lg text-center;
 }
 
 /* Pagination */

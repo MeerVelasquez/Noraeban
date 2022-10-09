@@ -6,7 +6,7 @@ export default function renderPlaylist(globals) {
 
     const { songs } = playlist;
 
-    const numPages = 1 + parseInt(songs.length / 6);
+    const numPages = 1 + parseInt(songs.length / 5);
     updatePaging(numPages);
 
     let $page;
@@ -39,6 +39,8 @@ export default function renderPlaylist(globals) {
         </div>
         `);
     }
+    console.log('pages', numPages);
+    console.log('adding', songsTemp);
     addSongsToPage($page, songsTemp);
     selectPage(1);
 
