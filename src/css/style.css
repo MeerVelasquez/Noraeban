@@ -1931,6 +1931,8 @@ Header .Barra .Logo h3 .microfono::after {
   flex-direction: column;
   justify-content: space-between;
   row-gap: 2rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 /* .playlist-3 {
@@ -1948,7 +1950,8 @@ Header .Barra .Logo h3 .microfono::after {
 .page__row {
   display: flex;
   flex-grow: 1;
-  justify-content: space-between;
+  -moz-column-gap: 4.166667%;
+       column-gap: 4.166667%;
 }
 
 .page-3 {
@@ -1976,7 +1979,6 @@ Header .Barra .Logo h3 .microfono::after {
 .playlist__item {
   max-width: 29.166667%;
   flex-grow: 1;
-  flex-basis: 33.333333%;
 }
 
 /* .playlist-3 .playlist__item {
@@ -2058,6 +2060,10 @@ Header .Barra .Logo h3 .microfono::after {
   line-height: 1.25rem;
   --tw-text-opacity: 1;
   color: rgb(208 177 208 / var(--tw-text-opacity));
+}
+
+.add-song {
+  max-width: 29.166667% !important;
 }
 
 .add-song .playlist__item__cont {

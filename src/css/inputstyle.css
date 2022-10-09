@@ -771,7 +771,7 @@ Header .Barra .Logo h3 .microfono::after {
 }
 
 .page {
-  @apply absolute
+  @apply absolute bg-white
   w-full 
   h-full 
   /* block */
@@ -796,7 +796,7 @@ Header .Barra .Logo h3 .microfono::after {
 }
 
 .page__row {
-  @apply flex justify-between grow;
+  @apply flex grow gap-x-1/24;
 }
 
 .page-3 {
@@ -816,7 +816,7 @@ Header .Barra .Logo h3 .microfono::after {
 }
 
 .playlist__item {
-  @apply grow basis-1/3 max-w-7/24;
+  @apply grow max-w-7/24;
 }
 
 /* .playlist-3 .playlist__item {
@@ -857,6 +857,10 @@ Header .Barra .Logo h3 .microfono::after {
 
 .song__info__artist {
   @apply text-lila text-sm;
+}
+
+.add-song {
+  @apply max-w-7/24 !important;
 }
 
 .add-song .playlist__item__cont {

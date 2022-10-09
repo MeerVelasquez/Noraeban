@@ -14,14 +14,7 @@ export default function renderPlaylist(globals) {
     for(let i = 0; i < songs.length; i++) {
         if(i % 5 === 0) {
             if($page) { // if not first page
-                const $row1 = document.createElement('div');
-                const $row2 = document.createElement('div');
-                $row1.className = 'page-row';
-                $row2.className = 'page-row';
-                $row1.innerHTML = songsTemp.slice(0, 3).join('');
-                $row2.innerHTML = songsTemp.slice(3, 5).join('');
-                $page.appendChild($row1);
-                $page.appendChild($row2);
+                addSongsToPage($page, songsTemp);
                 songsTemp = [];
             }
             $page = document.createElement('div');
@@ -46,29 +39,38 @@ export default function renderPlaylist(globals) {
         </div>
         `);
     }
-    $page.innerHTML = songsTemp;
-    $page.classList.add($page.children.length > 2 ? 'playlist-6' : 'playlist-3');
+    addSongsToPage($page, songsTemp);
     selectPage(1);
 
-    // distributeSongs();
-    
-    // for(let i = 2; i <= numPages; i++) {
-
-    // }
-
-    // document.querySelector('.add-song').addEventListener('click', () => {
-    //     console.log(numPages);
-    // });
-
     $paging.addEventListener('click', e => {
-        if(e.target.matches('page-btn')) {
+        // console.log(e.target.matches('.page-btn'));
+        if(e.target.matches('.page-btn')) {
             const page = parseInt(e.target.getAttribute('page-num'));
+            // console.log('asd');
             if(page !== globals.currentPage) {
                 globals.currentPage = page;
-                selectPage(currentPage);
+                selectPage(globals.currentPage);
             }
         }
     });
+}
+
+function addSongsToPage($page, songs) {
+    const $row1 = document.createElement('div');
+    $row1.className = 'page__row';
+    $page.appendChild($row1);
+    if(songs.length <= 2) {
+        $row1.innerHTML = songs.join('');    
+        $page.classList.add('page-3');
+    }else {
+        $row1.innerHTML = songs.slice(0, 3).join('');
+
+        const $row2 = document.createElement('div');
+        $row2.className = 'page__row';
+        $page.appendChild($row2);
+        $row2.innerHTML = songs.slice(3, 5).join('');
+        $page.classList.add('page-6');
+    }
 }
 
 function updatePaging(numPages) {
@@ -81,20 +83,21 @@ function updatePaging(numPages) {
 
 function selectPage(page) {
     const $pages = $playlist.querySelectorAll('.page');
-    const $toSelect = $pages[page - 1];
-    if(!$toSelect) {
+    const $page = $pages[page - 1];
+    if(!$page) {
         console.log('Page not found');
         return;
     }
 
-    for(let $page of $pages) {
-        if($page.hasAttribute('selected')) {
-            $page.removeAttribute('selected');
+    for(let $p of $pages) {
+        if($p.hasAttribute('selected')) {
+            $p.removeAttribute('selected');
             break;
         }
     }
-    $toSelect.setAttribute('selected', '');
-    $toSelect.appendChild($addSong);
+    console.log($page);
+    $page.setAttribute('selected', '');
+    $page.lastElementChild.appendChild($addSong);
     if($addSong.classList.contains('hidden')) $addSong.classList.remove('hidden');
 }
 

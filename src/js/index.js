@@ -21,18 +21,18 @@ const globals = {
                     title: 'Song 1',
                     artist: 'Artist 1',
                 },
-                // {
-                //     title: 'Song 1',
-                //     artist: 'Artist 1',
-                // },
-                // {
-                //     title: 'Song 1',
-                //     artist: 'Artist 1',
-                // },
-                // {
-                //     title: 'Song 1',
-                //     artist: 'Artist 1',
-                // },
+                {
+                    title: 'Song 1',
+                    artist: 'Artist 1',
+                },
+                {
+                    title: 'Song 1',
+                    artist: 'Artist 1',
+                },
+                {
+                    title: 'Song 1',
+                    artist: 'Artist 1',
+                },
             ]
         }
     ],
