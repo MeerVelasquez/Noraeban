@@ -39,8 +39,8 @@ export default function renderPlaylist(globals) {
         </div>
         `);
     }
-    console.log('pages', numPages);
-    console.log('adding', songsTemp);
+    // console.log('pages', numPages);
+    // console.log('adding', songsTemp);
     addSongsToPage($page, songsTemp);
     selectPage(1);
 
@@ -97,7 +97,7 @@ function selectPage(page) {
             break;
         }
     }
-    console.log($page);
+    // console.log($page);
     $page.setAttribute('selected', '');
     $page.lastElementChild.appendChild($addSong);
     if($addSong.classList.contains('hidden')) $addSong.classList.remove('hidden');
