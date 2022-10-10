@@ -14,7 +14,7 @@ export default function renderPlaylist(globals, renderSongs) {
 
     if(renderSongs) {
         const { songs } = playlist;
-        numPages += parseInt(songs.length / 5);
+        numPages += parseInt(( songs.length - 1) / 5);
 
         for(let i = 0; i < songs.length; i++) {
             if(i % 5 === 0) {
@@ -104,7 +104,6 @@ function selectPage(page) {
             break;
         }
     }
-    // console.log($page);
     $page.setAttribute('selected', '');
     $page.lastElementChild.appendChild($addSong);
     if($addSong.classList.contains('hidden')) $addSong.classList.remove('hidden');

@@ -1,3 +1,4 @@
+import { getSongPlayingElement, pause } from "./playSongs.js";
 import renderPlaylist from "./renderPlaylist.js";
 import { hasAncestor } from "./utils.js";
 
@@ -9,8 +10,9 @@ export default function(globals) {
             }
         } else {
             if(hasAncestor(e.target, $playlistsDropdown)) {
-                if(e.target.matches('.playlists-dropdown__option')) {
+                if(e.target.matches('.playlists-dropdown__option') && !e.target.hasAttribute('selected')) {
                     selectPlaylist(e.target);
+                    if(globals.playing) pause(globals, getSongPlayingElement(globals));
                     globals.currentPlaylist = e.target.textContent;
                     renderPlaylist(globals, false);
                 } else if(e.target.matches('.playlists-dropdown__new')) {

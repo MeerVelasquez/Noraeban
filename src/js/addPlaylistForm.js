@@ -1,6 +1,7 @@
 import { setPlaylists } from './utils.js';
 import PlayList from './playlist.js';
 import { loadPlaylists, selectPlaylistNamed } from './playlistsDropdown.js';
+import renderPlaylist from './renderPlaylist.js';
 
 export default function(globals) {
     const playlists = globals.playlists;
@@ -16,7 +17,9 @@ export default function(globals) {
                     setPlaylists(playlists);
                     $modalPlaylist.classList.add('hidden');
                     loadPlaylists(playlists);
-                    selectPlaylistNamed(value)
+                    selectPlaylistNamed(value);
+                    globals.currentPlaylist = value;
+                    renderPlaylist(globals, false);
                 } else {
                     console.log('Playlist already exists');
                 }

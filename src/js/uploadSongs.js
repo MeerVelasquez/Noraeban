@@ -1,17 +1,20 @@
 import renderPlaylist from "./renderPlaylist.js";
+import { setPlaylists } from "./utils.js";
 
 export default function uploadSongs(globals) {
 
     function handleFileSelect(e) {
 
         console.log(e.target.files);
-        console.log(URL.createObjectURL(e.target.files[0]));
-        // console.log(e.dataTransfer.files);
         
         e.preventDefault();
+        
+        const { playlists } = globals;
         $dropZone.classList.remove('drop-zone-over');
         let files = [...e.target.files];
         if(globals.currentPlaylist) {
+            const playlist = playlists.find(playlist => playlist.name === globals.currentPlaylist);
+            
             files = files
                 .filter(({ type }) => type.includes('audio'))
                 .map(file => {
@@ -19,13 +22,15 @@ export default function uploadSongs(globals) {
                     const [artist, title] = name.split(' - ');
                     const url = URL.createObjectURL(file);
                     return title ? { artist, title, url } : { title: artist, artist: '', url };
-                });
+                })
+                .filter(({ title }) => !playlist.songs.find(song => song.title === title));
             //
-            const playlist = globals.playlists.find(playlist => playlist.name === globals.currentPlaylist);
+            console.log(files);
             if(playlist) {
                 // playlist.songs = [...playlist.songs, ...files];
                 playlist.songs = playlist.songs.concat(files);
-                // playlist.songs = files;
+                setPlaylists(playlists);
+                console.log('setting');
             }
         }
         $modalUpload.classList.add('hidden');
@@ -47,7 +52,7 @@ export default function uploadSongs(globals) {
     });
     // $dropZone.addEventListener('drop', handleFileSelect);
 
-    $uploadSong.addEventListener('click', () => {
+    $uploadSong.addEventListener('click', function() {
         this.value = null;
     });
     $uploadSong.addEventListener('change', handleFileSelect, false);

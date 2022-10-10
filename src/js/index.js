@@ -40,6 +40,7 @@ const globals = {
     currentPlaylist: null,
     currentSong: null,
     currentPage: 1,
+    playing: false,
 }
 
 playlistsDropdown(globals);
