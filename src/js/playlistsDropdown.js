@@ -12,8 +12,7 @@ export default function(globals) {
                 if(e.target.matches('.playlists-dropdown__option')) {
                     selectPlaylist(e.target);
                     globals.currentPlaylist = e.target.textContent;
-                    globals.currentPage = 1;
-                    renderPlaylist(globals);
+                    renderPlaylist(globals, false);
                 } else if(e.target.matches('.playlists-dropdown__new')) {
                     $playlistsDropdown.classList.add('hidden');
                     document.querySelector('.modal-playlist').classList.remove('hidden');

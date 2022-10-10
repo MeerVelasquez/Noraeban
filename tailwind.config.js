@@ -26,6 +26,32 @@ const percentages = {
   '23/24': '95.833333%',
 };
 
+const vh = {
+  'vh-1/2': '50vh',
+  'vh-1/3': '33.333333vh',
+  'vh-2/3': '66.666667vh',
+  'vh-1/4': '25vh',
+  'vh-3/4': '75vh',
+  'vh-1/5': '20vh',
+  'vh-2/5': '40vh',
+  'vh-3/5': '60vh',
+  'vh-4/5': '80vh',
+  'vh-1/6': '16.666667vh',
+  'vh-5/6': '83.333333vh',
+  'vh-1/12': '8.333333vh',
+  'vh-5/12': '41.666667vh',
+  'vh-7/12': '58.333333vh',
+  'vh-11/12': '91.666667vh',
+  'vh-1/24': '4.166667vh',
+  'vh-5/24': '20.833333vh',
+  'vh-7/24': '29.166667vh',
+  'vh-11/24': '45.833333vh',
+  'vh-13/24': '54.166667vh',
+  'vh-17/24': '70.833333vh',
+  'vh-19/24': '79.166667vh',
+  'vh-23/24': '95.833333vh',
+}
+
 module.exports = {
   content: ['./index.html', './src/js/*.js'],
   theme: {
@@ -59,7 +85,10 @@ module.exports = {
       gap: percentages,
       minWidth: percentages,
       maxWidth: percentages,
-      minHeight: percentages,
+      minHeight: {
+        ...percentages,
+        ...vh,
+      },
       height: percentages,
       maxHeight: percentages,
       fontSize: percentages,

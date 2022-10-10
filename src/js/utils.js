@@ -24,7 +24,9 @@ export function getPlaylists() {
 }
 
 export function setPlaylists(playlists) {
-    localStorage.setItem(PLAYLISTS, JSON.stringify(playlists));
+    localStorage.setItem(PLAYLISTS, JSON.stringify(playlists.map(({ name }) => ({
+        name, songs: []
+    }))));
 }
 
 export function removePlaylists() {

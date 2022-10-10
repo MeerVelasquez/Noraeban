@@ -1,54 +1,61 @@
-export default function renderPlaylist(globals) {
+export default function renderPlaylist(globals, renderSongs) {
     if(!globals.currentPlaylist) return;
     
     const playlist = globals.playlists.find(p => p.name === globals.currentPlaylist);
     if(!playlist) return;
 
-    const { songs } = playlist;
+    $playlist.insertAdjacentElement('beforebegin', $addSong);
+    $playlist.innerHTML = '';
 
-    const numPages = 1 + parseInt(songs.length / 5);
-    updatePaging(numPages);
-
+    globals.currentPage = 1;
     let $page;
     let songsTemp = [];
-    for(let i = 0; i < songs.length; i++) {
-        if(i % 5 === 0) {
-            if($page) { // if not first page
-                addSongsToPage($page, songsTemp);
-                songsTemp = [];
+    let numPages = 1;
+
+    if(renderSongs) {
+        const { songs } = playlist;
+        numPages += parseInt(songs.length / 5);
+
+        for(let i = 0; i < songs.length; i++) {
+            if(i % 5 === 0) {
+                if($page) { // if not first page
+                    addSongsToPage($page, songsTemp);
+                    songsTemp = [];
+                }
+                $page = document.createElement('div');
+                $playlist.appendChild($page);
+                $page.className = 'page';
             }
-            $page = document.createElement('div');
-            $playlist.appendChild($page);
-            $page.className = 'page';
-        }
-        // grow lg:basis-1/3 basis-full min-h-full md:min-h-0 md:basis-1/2 md:max-w-11/24 lg:max-w-7/24
-        songsTemp.push(`
-        <div class="playlist__item song">
-            <div class="playlist__item__cont">
-                <span class="song__music-note img-abs-cont img-abs-cont-cent">
-                    <img src="./assets/img/music-note.svg" alt="Music note">
-                </span>
-                <div class="song__info">
-                    <div class="song__info__title">${songs[i].title}</div>
-                    <div class="song__info__artist">${songs[i].artist}</div>
+            songsTemp.push(`
+                <div class="playlist__item song">
+                    <div class="playlist__item__cont">
+                        <span class="song__music-note img-abs-cont img-abs-cont-cent">
+                            <img src="./assets/img/music-note.svg" alt="Music note">
+                        </span>
+                        <div class="song__info">
+                            <div class="song__info__title">${songs[i].title}</div>
+                            <div class="song__info__artist">${songs[i].artist}</div>
+                        </div>
+                        <span class="song__play img-abs-cont img-abs-cont-cent">
+                            <img src="./assets/img/play.svg" alt="Play">
+                        </span>
+                    </div>
                 </div>
-                <span class="song__play img-abs-cont img-abs-cont-cent">
-                    <img src="./assets/img/play.svg" alt="Play">
-                </span>
-            </div>
-        </div>
-        `);
+            `);
+        }
+    } else {
+        $page = document.createElement('div');
+        $playlist.appendChild($page);
+        $page.className = 'page';
     }
-    // console.log('pages', numPages);
-    // console.log('adding', songsTemp);
     addSongsToPage($page, songsTemp);
+    updatePaging(numPages);
     selectPage(1);
+    $playlistTitle.innerHTML = playlist.name;
 
     $paging.addEventListener('click', e => {
-        // console.log(e.target.matches('.page-btn'));
         if(e.target.matches('.page-btn')) {
             const page = parseInt(e.target.getAttribute('page-num'));
-            // console.log('asd');
             if(page !== globals.currentPage) {
                 globals.currentPage = page;
                 selectPage(globals.currentPage);
@@ -64,7 +71,7 @@ function addSongsToPage($page, songs) {
     if(songs.length <= 2) {
         $row1.innerHTML = songs.join('');    
         $page.classList.add('page-3');
-    }else {
+    } else {
         $row1.innerHTML = songs.slice(0, 3).join('');
 
         const $row2 = document.createElement('div');
@@ -106,3 +113,4 @@ function selectPage(page) {
 const $playlist = document.querySelector('.playlist');
 const $paging = document.querySelector('.playlist-paging');
 const $addSong = document.querySelector('.add-song');
+const $playlistTitle = document.querySelector('.playlist-title');
