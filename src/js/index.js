@@ -12,8 +12,30 @@ const globals = {
                 title: `Song ${i + 1}`,
                 artist: `Artist ${i + 1}`,
             }))
-        }
+        },
+        {
+            name: 'Playlist 2',
+            songs: Array(7).fill(0).map((_, i) => ({
+                title: `Song ${i + 1}`,
+                artist: `Artist ${i + 1}`,
+            }))
+        },
+        {
+            name: 'Playlist 3',
+            songs: Array(7).fill(0).map((_, i) => ({
+                title: `Song ${i + 1}`,
+                artist: `Artist ${i + 1}`,
+            }))
+        },
+        {
+            name: 'Playlist 4',
+            songs: Array(7).fill(0).map((_, i) => ({
+                title: `Song ${i + 1}`,
+                artist: `Artist ${i + 1}`,
+            }))
+        },
     ],
+    // playlists: getPlaylists(),
     currentPlaylist: null,
     currentSong: null,
     currentPage: 1,

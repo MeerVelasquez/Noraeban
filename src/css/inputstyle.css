@@ -741,7 +741,6 @@ Header .Barra .Logo h3 .microfono::after {
 }
 
 /* Playlists dropdown */
-
 .playlists-dropdown__option {
   @apply text-gray-700 block px-4 py-2 text-sm hover:bg-purple-lighter cursor-pointer;
 }
@@ -757,7 +756,7 @@ Header .Barra .Logo h3 .microfono::after {
 }
 
 .modal-backdrop {
-  @apply fixed inset-0 bg-gray-500 bg-opacity-70 transition-opacity;
+  @apply fixed inset-0 bg-gray-600 bg-opacity-50 transition-opacity;
 }
 
 .modal-content {
@@ -765,10 +764,6 @@ Header .Barra .Logo h3 .microfono::after {
 }
 
 /* Playlist */
-
-.playlist {
-  @apply relative grow;
-}
 
 .page {
   @apply absolute bg-white
